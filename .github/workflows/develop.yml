@@ -17,7 +17,7 @@ jobs:
       # pasamos todas las variables que configuramos en el archivo terraform.yml
       environment: dev
       # remplazar por el ARN del rol que se creo en la actividad 1
-      aws-assume-role-arn: "arn:aws:iam::461584272180:role/ROLIACGRupo1_Johany"
+      aws-assume-role-arn: "arn:aws:iam::461584272180:role/johanygrupo1"
       aws-region: "us-east-1"
       # remplazar por el nombre del s3 que se creo en la actividad 2
       aws-statefile-s3-bucket: "s3infoiacgrupo1johany"
