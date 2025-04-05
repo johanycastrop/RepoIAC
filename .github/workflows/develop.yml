@@ -22,4 +22,4 @@ jobs:
       # remplazar por el nombre del s3 que se creo en la actividad 2
       aws-statefile-s3-bucket: "s3infoiacgrupo1johany"
       # remplazar por el nombre de la BD dynamo que se creo para los objetos lock
-      aws-lock-dynamodb-table: "bdinfoiacgrupo1johany"
+      aws-lock-dynamodb-table: "johany040425"
