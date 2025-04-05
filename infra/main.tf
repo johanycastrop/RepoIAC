@@ -3,7 +3,7 @@ resource "aws_s3_bucket" "my_bucket" {
   // el nombre del bucket va a ser el nombre de la variable bucket_name
   // que se define en el archivo variables.tf
   // y se obtiene del archivo terraform.tfvars
-  bucket = var.s3infoiacgrupo1johany
+  bucket = var.bucket_name
 
   // se habilita el versionamiento del bucket
   versioning {
@@ -13,6 +13,7 @@ resource "aws_s3_bucket" "my_bucket" {
   // acl es access control list
   // private es privado
   // public-read es público
-  acl = "private"
+  acl        = "private"
   force_destroy = true
+  
 }
