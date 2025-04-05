@@ -23,3 +23,5 @@ jobs:
       aws-statefile-s3-bucket: "johany050425"
       # remplazar por el nombre de la BD dynamo que se creo para los objetos lock
       aws-lock-dynamodb-table: "johany040425"
+
+      
