@@ -23,5 +23,3 @@ jobs:
       aws-statefile-s3-bucket: "s3infoiacgrupo1johany"
       # remplazar por el nombre de la BD dynamo que se creo para los objetos lock
       aws-lock-dynamodb-table: "bdinfoiacgrupo1johany"
-
-
