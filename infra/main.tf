@@ -13,6 +13,6 @@ resource "aws_s3_bucket" "my_bucket" {
   // acl es access control list
   // private es privado
   // public-read es público
-  acl        = "private"
+  acl = "private"
   force_destroy = true
 }
