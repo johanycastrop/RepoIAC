@@ -1,3 +1,3 @@
-variable "bucket_name" {
+variable "s3infoiacgrupo1johany" {
   type = string
 }
