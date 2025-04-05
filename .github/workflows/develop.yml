@@ -24,3 +24,5 @@ jobs:
       # remplazar por el nombre de la BD dynamo que se creo para los objetos lock
       aws-lock-dynamodb-table: "johany050425"
 
+
+    
