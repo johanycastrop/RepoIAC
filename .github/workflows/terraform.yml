@@ -73,7 +73,7 @@ jobs:
         id: terraform-destroy
         run: cd infra &&
           terraform workspace select ${{ inputs.environment }} || terraform workspace new ${{inputs.environment }} &&
-          terraform destroy -var-file="./envs/${{ inputs.environment }}/terraform.tfvars" -autoapprove
+          terraform destroy -var-file="./envs/${{ inputs.environment }}/terraform.tfvars" -auto-approve
 
 # va a planear todo lo que se despliega dentro de AWS basado en el codigo terraform existente
       - name: Terraform Plan
