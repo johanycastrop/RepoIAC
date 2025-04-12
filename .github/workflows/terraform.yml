@@ -47,6 +47,14 @@ jobs:
           role-to-assume: ${{ inputs.aws-assume-role-arn }}
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ inputs.aws-region }}
+
+# configurar la eliminacion de IaC
+      - name: Read destroy configuration
+        id: read-destroy-config
+        run: |
+          DESTROY="$(jq -r '.${{ inputs.environment }}' ./infra/destroy
+          echo "destroy=$(echo $DESTROY)" >> $GITHUB_OUTPUT
+
 # inicializar le proyecto de terraform dentro del pipeline, e indicar donde se encuentra la informacion del S3, la dynamo y la region configurada en los archivos .tf
       - name: Terraform Init
         run: |
@@ -58,6 +66,16 @@ jobs:
 # va a validar si tenemos errores de sintaxis dentro de los archivos de terraform
       - name: Terraform Validate
         run: terraform validate
+
+# va a añadir un paso de eliminacion de la infra
+      - name: Terraform Destroy
+        if: steps.read-destroy-config.outputs.destroy == 'true'
+        id: terraform-destroy
+        run: cd infra &&
+          terraform workspace select ${{ inputs.environment }} || terraform workspace new ${{
+          inputs.environment }} &&
+          terraform destroy -var-file="./envs/${{ inputs.environment }}/terraform.tfvars" -autoapprove
+
 # va a planear todo lo que se despliega dentro de AWS basado en el codigo terraform existente
       - name: Terraform Plan
         id: terraform-plan
@@ -66,10 +84,13 @@ jobs:
           terraform plan -var-file="./envs/${{ inputs.environment }}/terraform.tfvars" -out="${{ inputs.environment }}.plan"
  # implementa la infraestructura planeada dentro de AWS     
       - name: Terraform Apply
+        if: steps.read-destroy-config.outputs.destroy != 'true'
         id: terraform-apply
         run: cd infra &&
           terraform workspace select ${{ inputs.environment }} || terraform workspace new ${{ inputs.environment }} &&
           terraform apply "${{ inputs.environment }}.plan"
+
+
 
 
           
