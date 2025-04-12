@@ -78,6 +78,7 @@ jobs:
 
 # va a planear todo lo que se despliega dentro de AWS basado en el codigo terraform existente
       - name: Terraform Plan
+        if: steps.read-destroy-config.outputs.destroy != 'true'
         id: terraform-plan
         run: cd infra &&
           terraform workspace select ${{ inputs.environment }} || terraform workspace new ${{ inputs.environment }} &&
