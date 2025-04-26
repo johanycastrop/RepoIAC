@@ -1,1 +1,1 @@
-table_name="TablaIaCgrupoXProd"
+table_name="TablaIaCgrupo1Prod"
