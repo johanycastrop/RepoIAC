@@ -1,1 +1,1 @@
-table_name="TablaIaCgrupoXDev"
+table_name="TablaIaCgrupo1Dev"
