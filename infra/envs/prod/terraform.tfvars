@@ -1,1 +1,3 @@
-bucket_name="s3infoiacgrupo1johanyprod"
+table_name="TablaIaCgrupo1Prod"
+
+

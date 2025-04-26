@@ -1,1 +1,1 @@
-bucket_name="johany040425666"
+table_name="TablaIaCgrupo1Dev"
